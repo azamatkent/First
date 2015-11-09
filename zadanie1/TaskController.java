@@ -54,6 +54,11 @@ public class TaskController
     {
         model.setDate(date);
     }
+    
+    public void updateTask(int key, String name, String description, Date date)
+    {
+        
+    }
 
     Map<Integer, Task> tasks = new HashMap<Integer, Task>();
 
