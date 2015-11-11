@@ -6,6 +6,7 @@
 package zadanie1;
 
 import java.io.*;
+import java.util.Map;
 
 /**
  *
@@ -14,37 +15,52 @@ import java.io.*;
 public class Serialization implements Serializable
 {
 
-    private TaskController all; // объект типа контроллера должен быть 
-
-    public static void safe(Serialization s)
+    public static void safe(Map s)
     {
         try
         {
             FileOutputStream file = new FileOutputStream("C:\\Users\\Азамат\\Desktop\\t.txt");
             ObjectOutputStream object = new ObjectOutputStream(file);
-            object.writeObject(s);
-            object.flush();
-            object.close();
-            file.close();
+            try
+            {
+                object.writeObject(s);
+            } catch (IOException e)
+            {
+
+            } finally
+            {
+                object.close();
+                file.close();
+            }
         } catch (IOException e)
         {
 
         }
     }
 
-    public static Serialization load()
+    public static Map<Integer, Task> load()
     {
-        Serialization object = null;
+        Map<Integer, Task> object = null;
+        FileInputStream file;
+        ObjectInputStream ob;
         try
         {
-            FileInputStream file = new FileInputStream("C:\\Users\\Азамат\\Desktop\\t.txt");
-            ObjectInputStream ob = new ObjectInputStream(file);
-            object = (Serialization) ob.readObject();
-            ob.close();
-            file.close();
+            file = new FileInputStream("C:\\Users\\Азамат\\Desktop\\t.txt");
+            ob = new ObjectInputStream(file);
+            try
+            {
+                object = (Map<Integer, Task>) ob.readObject();
+            } catch (IOException e)
+            {
+
+            } finally
+            {
+                ob.close();
+                file.close();
+            }
         } catch (FileNotFoundException e)
         {
-            File file = new File("C:\\Users\\Азамат\\Desktop\\t.txt");
+            File file1 = new File("C:\\Users\\Азамат\\Desktop\\t.txt");
 
         } catch (IOException | ClassNotFoundException e)
         {

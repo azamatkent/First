@@ -55,25 +55,25 @@ public class TaskController
         model.setDate(date);
     }
     
-    public void updateTask(int key, String name, String description, Date date)
-    {
-        
-    }
-
     Map<Integer, Task> tasks = new HashMap<Integer, Task>();
 
-    public void addTask(Integer key, String name, String description)
+    public void createTask(Integer key, String name, String description, Date date)
     {
-        tasks.put(key, new Task());//.put(key, new Task(key, name, description));
+        tasks.put(key, new Task(key, name, description, date));
     }
     
-    public void delTask()
+    public void updateTask(Integer key, String name, String description, Date date)
     {
         
+    }
+
+    public void deleteTask(Integer key, String name, String description, Date date)
+    {
+        tasks.remove(key);
     }
 
     public void updateView()
     {
-        view.printTaskDetails(model.getName(), model.getDescription(), model.getDate());
+        view.printTaskDetails(model.getKey(), model.getName(), model.getDescription(), model.getDate());
     }
 }

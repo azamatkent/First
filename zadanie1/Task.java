@@ -9,10 +9,24 @@ import java.util.Date;
  */
 public class Task
 {
-
+    
+    private int key;
     private String name, description;
     private Date date;
     // Еще нужны контакты 
+
+    public Task(Integer key, String name, String description, Date date)
+    {
+        this.key = key;
+        this.name = name;
+        this.description = description;
+        this.date = date;
+    }
+    
+    public int getKey()
+    {
+        return key;
+    }
 
     public String getName()
     {
@@ -44,5 +58,10 @@ public class Task
     public void setDate(Date date)
     {
         this.date = date;
+    }
+
+    public void setKey(int key)
+    {
+        this.key = key;
     }
 }

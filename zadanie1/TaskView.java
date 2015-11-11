@@ -14,9 +14,9 @@ import java.util.Date;
 public class TaskView
 {
 
-    public void printTaskDetails(String taskName, String taskDescription, Date taskDate)
+    public void printTaskDetails(int taskKey, String taskName, String taskDescription, Date taskDate)
     {
-        System.out.println("Task: ");
+        System.out.println("Task: " + taskKey);
         System.out.println("Name: " + taskName);
         System.out.println("Description: " + taskDescription);
         System.out.println("Date: " + taskDate);
